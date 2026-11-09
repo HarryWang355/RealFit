@@ -1,0 +1,13 @@
+.DS_Store
+
+# Pre-release paper PDF (currently marked "To Be Released" on index.html; remove line below when publishing PDF):
+assets/RealFit_Paper.pdf
+
+# Unused intermediate slide crops & draft folders (not referenced by index.html / app.js):
+assets/dataset/
+assets/failure/
+assets/logos/
+assets/method/
+assets/figures/*
+!assets/figures/teaser_v2_cropped.png
+!assets/figures/method_slide2_cropped.png

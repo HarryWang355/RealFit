@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Measurement-Conditioned Virtual Try-On</title>
+  <meta name="description" content="Measurement-Conditioned Virtual Try-On">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="static/css/style.css?v=11">
+</head>
+<body id="top" data-theme="nordic">
+
+  <!-- HERO: TITLE, AUTHORS, AFFILIATIONS, 3 RELEASE TABS, PAPER TEASER & ABSTRACT -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        Measurement-Conditioned<br>Virtual Try-On
+      </h1>
+
+      <!-- Authors -->
+      <div class="hero-authors">
+        <span class="author"><a href="https://harrywang355.github.io/" target="_blank" rel="noopener">Yuanhao Wang</a><sup>1,2</sup></span>
+        <span class="author"><a href="https://www.linkedin.com/in/varsha-r/" target="_blank" rel="noopener">Varsha Ramakrishnan</a><sup>2</sup></span>
+        <span class="author"><a href="https://homes.cs.washington.edu/~seitz/" target="_blank" rel="noopener">Steve Seitz</a><sup>1,2</sup></span>
+        <span class="author"><a href="https://homes.cs.washington.edu/~kemelmi/" target="_blank" rel="noopener">Ira Kemelmacher-Shlizerman</a><sup>1,2</sup></span>
+      </div>
+
+      <!-- Affiliations (UW & Google Research) -->
+      <div class="hero-affils">
+        <span class="affil-item">
+          <svg width="20" height="14" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 2H10.5V4.5H8.5L12.2 16.5L16.5 2H19.5L23.8 16.5L27.5 4.5H25.5V2H35V4.5H32.6L26.8 22H22.2L18 8.8L13.8 22H9.2L3.4 4.5H1V2Z" fill="#4B2E83"/>
+          </svg>
+          <span><sup>1</sup>University of Washington</span>
+        </span>
+        <span class="affil-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span><sup>2</sup>Google Research</span>
+        </span>
+      </div>
+
+      <!-- Release & Related Work Tabs: arXiv, Code, Dataset (To Be Released), Related Work (FIT) -->
+      <div class="hero-links">
+        <span class="pill-btn disabled-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          arXiv (To Be Released)
+        </span>
+        <span class="pill-btn disabled-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Code (To Be Released)
+        </span>
+        <span class="pill-btn disabled-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          Dataset (To Be Released)
+        </span>
+        <a href="https://johannakarras.github.io/FIT/" target="_blank" rel="noopener" class="pill-btn related-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Related Work: FIT
+        </a>
+      </div>
+
+      <!-- PAPER TEASER FIGURE & EXACT CAPTION -->
+      <div class="paper-figure-card">
+        <img src="assets/figures/teaser_v2_cropped.png" alt="Measurement-conditioned virtual try-on with RealFIT">
+        <p class="paper-caption">
+          <strong>Measurement-conditioned virtual try-on with RealFIT.</strong> Given an input person of height <strong>H</strong> and a layflat garment (<em>left</em>), RealFIT synthesizes photorealistic try-on results conditioned on physical garment measurements in centimeters (<em>right</em>; <strong>L</strong>: length, <strong>B</strong>: bust, <strong>W</strong>: waist, <strong>S</strong>: sleeve length), smoothly transitioning from tight to oversized fit with authentic fabric drape.
+        </p>
+      </div>
+
+      <!-- WORD-FOR-WORD PAPER ABSTRACT -->
+      <div class="abstract-box">
+        <h2 class="abstract-heading">Abstract</h2>
+        <p class="abstract-text">
+          The core value of real-world try-on lies in allowing consumers to both a) visualize how a garment looks on themselves, as well as b) see how a garment will fit on them: whether any given size will stretch tightly over body contours, or drape loosely with excess slack. Prevailing Virtual Try-On (VTO) models address the first use-case, but ignore the second: by conditioning solely on 2D visual inputs, they default to synthesizing deceptively well-fitted try-on results regardless of garment dimensions. Data scarcity is a central bottleneck for developing fit-accurate VTO systems. Standard public benchmarks consist of catalog imagery lacking both garment dimensions and body measurements. While recent synthetic approaches leverage 3D physics simulation to generate exact measurement labels, they suffer from sim-to-real domain gaps and remain constrained to simplistic garment topologies.
+        </p>
+        <p class="abstract-text" style="margin-top:12px;">
+          In this work, we address the issue of fit through <strong>RealFIT</strong>, the first framework for scalable, real-world measurement-conditioned virtual try-on across diverse and structurally complex apparel categories. To bridge the data gap, we introduce a multi-tier data hierarchy that bootstraps geometric priors from large-scale web retail metadata and VLM-assisted measurement annotations, anchored by a newly curated real-world dataset with tape-measured metric ground truth. Using this data, we propose a fit-aware virtual try-on model based on flow matching that integrates a dedicated measurement encoder to condition generation on human and garment dimensions. To enhance the model's sensitivity to metric conditions, we also introduce a <strong>Localized Metric Contrastive (LMC)</strong> loss, which explicitly boosts the conditioning signal by contrasting velocity fields across paired sizing perturbations within targeted regions. Furthermore, we establish a systematic evaluation protocol to benchmark fit accuracy. Extensive experiments demonstrate that RealFIT achieves state-of-the-art photorealism and fit accuracy and controllability across varied body geometries and complex garment styles. We plan to release our benchmark dataset, evaluation suite, and code upon acceptance.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: INTERACTIVE VIRTUAL TRY-ON WITH MEASUREMENT CONTROL -->
+  <section id="gallery" class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Interactive Virtual Try-On with Measurement Control</h2>
+        <p class="section-desc">
+          Qualitative results of RealFIT across increasing garment measurements, scaled from −20% to +20%.
+        </p>
+      </div>
+
+      <!-- Garment Selector Strip -->
+      <div class="garment-strip-wrapper">
+        <div class="suite-filter-bar">
+          <div class="segmented-control" id="studio-filter-tabs">
+            <button class="seg-btn active" data-studio-filter="all">All 16 Garments</button>
+            <button class="seg-btn" data-studio-filter="web">RealFit-Web</button>
+            <button class="seg-btn" data-studio-filter="bench">RealFit-Bench (4K Studio)</button>
+          </div>
+          <button id="studio-guide-btn" class="pill-btn" style="padding:6px 14px;font-size:0.8rem;cursor:pointer;">
+            ✓ Reference Hemline Guide: ON
+          </button>
+        </div>
+
+        <div id="studio-garment-chips" class="garment-carousel"></div>
+      </div>
+
+      <!-- Compact 2-Part Interactive Viewer: Top = Inputs + 3-Up Live Comparison (Smallest / Active / Largest), Bottom = Full Filmstrip -->
+      <div class="viewer-card">
+        <div class="viewer-simple-top">
+          <!-- Left: Conditioning Inputs & Active Centimeter Measurements -->
+          <div class="viewer-inputs-panel">
+            <div>
+              <div class="panel-label" style="margin-bottom:8px;">
+                <span>Conditioning Inputs</span>
+                <span id="studio-source-tag" style="font-family:var(--font-mono);color:var(--accent);">RealFIT-Web</span>
+              </div>
+              <div class="inputs-two-col">
+                <div class="input-box">
+                  <img id="studio-person-img" src="assets/teaser/polo_person.jpg" alt="Input Person">
+                  <div class="input-box-cap">Person <span class="math">I<sub>p</sub></span> (<span id="studio-height-val">182 cm</span>)</div>
+                </div>
+                <div class="input-box">
+                  <img id="studio-garment-img" src="assets/teaser/polo_garment.jpg" alt="Input Garment">
+                  <div class="input-box-cap">Garment <span class="math">I<sub>g</sub></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cm-readout-list">
+              <div class="panel-label">
+                <span>Active Size (cm)</span>
+                <span id="studio-active-scale-text" style="font-family:var(--font-mono);color:var(--gt-emerald);">Input Size (0%)</span>
+              </div>
+              <div id="studio-meas-rows" class="cm-grid-2x2"></div>
+            </div>
+          </div>
+
+          <!-- Right: 3-Up Live Comparison (Smallest | Active Selected Size | Largest) + Interactive Scrubber -->
+          <div class="viewer-stage-panel">
+            <div class="stage-trio-grid">
+              <!-- Smallest Size Reference -->
+              <div class="stage-compare-card" id="studio-min-card" title="Click to select smallest size">
+                <div class="stage-compare-head">
+                  <span id="studio-min-title">−15% (Smallest)</span>
+                  <span id="studio-min-cm" class="stage-compare-sub">L: 60 cm</span>
+                </div>
+                <div class="stage-compare-img-wrap">
+                  <img id="studio-min-img" src="assets/teaser/polo_s0.jpg" alt="Smallest Size">
+                  <div class="ref-hemline studio-ref-line" style="top:75.2%;"></div>
+                </div>
+              </div>
+
+              <!-- Active Interactive Size (Center Highlighted) -->
+              <div class="stage-compare-card is-active-stage">
+                <div class="stage-compare-head active-head">
+                  <span id="studio-scale-badge">Input Size (0%)</span>
+                  <span id="studio-active-cm" class="stage-compare-sub">L: 71 cm · B: 102 cm</span>
+                </div>
+                <div class="stage-compare-img-wrap">
+                  <img id="studio-main-img" src="assets/teaser/polo_s2.jpg" alt="Active Synthesized Output">
+                  <div id="studio-hemline-guide" class="ref-hemline studio-ref-line" style="top:75.2%;"></div>
+                </div>
+              </div>
+
+              <!-- Largest Size Reference -->
+              <div class="stage-compare-card" id="studio-max-card" title="Click to select largest size">
+                <div class="stage-compare-head">
+                  <span id="studio-max-title">+15% (Largest)</span>
+                  <span id="studio-max-cm" class="stage-compare-sub">L: 82 cm</span>
+                </div>
+                <div class="stage-compare-img-wrap">
+                  <img id="studio-max-img" src="assets/teaser/polo_s4.jpg" alt="Largest Size">
+                  <div class="ref-hemline studio-ref-line" style="top:75.2%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="scrubber-bar">
+              <div class="scrubber-controls-inline">
+                <button id="studio-play-btn" class="auto-play-btn">▶ Auto-Sweep</button>
+                <input id="studio-range-slider" type="range" class="clean-slider" min="0" max="4" step="1" value="2">
+              </div>
+              <div id="studio-scale-pills" class="scale-quick-pills"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom: Full Progression Filmstrip Row -->
+        <div class="full-filmstrip-bar">
+          <div class="panel-label">
+            <span>Full Size Progression (Click any frame to inspect)</span>
+            <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">Dashed yellow line = Input size hemline reference</span>
+          </div>
+          <div id="studio-filmstrip-grid" class="filmstrip-row"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: INDEPENDENT DIMENSION CONTROL & VARYING HEIGHT H -->
+  <section id="control">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Independent Dimension &amp; Height Control</h2>
+        <p class="section-desc">
+          Starting from the input person and layflat garment, we vary a single measurement (Length, Sleeve, or Bust) or vary wearer height <strong>H</strong> while holding all other dimensions fixed.
+        </p>
+      </div>
+
+      <div class="two-up-showcase">
+        <!-- Left Card: Independent Dimension Control -->
+        <div class="showcase-panel">
+          <div>
+            <div class="showcase-header">
+              <div>
+                <h3 class="showcase-title">Emergent Independent Measurement Control</h3>
+                <p class="showcase-sub">Vary a single garment dimension (±10%) while holding all other entries in <span class="math"><b class="math-bf">m</b></span> fixed at +0%.</p>
+              </div>
+              <div class="segmented-control">
+                <button class="seg-btn active" data-indep-garment="puffer">Brown Hooded Puffer Jacket</button>
+                <button class="seg-btn" data-indep-garment="pullover">Yellow Half-Zip Pullover</button>
+              </div>
+            </div>
+
+            <div class="dim-tabs-bar" style="margin-top:14px;">
+              <div class="dim-tab active" data-indep-dim="length">
+                <div class="dim-tab-title"><span>Length Change (<span class="math">L</span>)</span></div>
+                <div class="dim-tab-sub">±10% · Bust &amp; Sleeve fixed</div>
+              </div>
+              <div class="dim-tab" data-indep-dim="width">
+                <div class="dim-tab-title"><span>Bust Change (<span class="math">B</span>)</span></div>
+                <div class="dim-tab-sub">±10% · Length &amp; Sleeve fixed</div>
+              </div>
+              <div class="dim-tab" data-indep-dim="sleeve">
+                <div class="dim-tab-title"><span>Sleeve Length Change (<span class="math">S</span>)</span></div>
+                <div class="dim-tab-sub">±10% · Length &amp; Bust fixed</div>
+              </div>
+            </div>
+
+            <div class="trio-showcase-grid" style="margin-top:16px;">
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="mini-input-card">
+                  <img id="indep-person-img" src="assets/independent/puffer_person.jpg" alt="Input Person">
+                  <div class="mini-input-label">Person <span class="math">I<sub>p</sub></span></div>
+                </div>
+                <div class="mini-input-card">
+                  <img id="indep-garment-img" src="assets/independent/puffer_garment.jpg" alt="Input Garment">
+                  <div class="mini-input-label">Garment <span class="math">I<sub>g</sub></span></div>
+                </div>
+              </div>
+
+              <div id="indep-trio-grid" class="trio-cards-row"></div>
+            </div>
+          </div>
+
+          <p class="paper-caption" style="margin-top:4px;">
+            <strong>Emergent independent control over individual garment dimensions.</strong> Starting from the input person and layflat garment (<em>left</em>), we vary a single measurement by ±10%, garment length (<em>Length Change</em>), bust (<em>Bust Change</em>), or sleeve length (<em>Sleeve Length Change</em>), while holding all other dimensions in <span class="math"><b class="math-bf">m</b></span> fixed at +0%. Although garment dimensions are strongly correlated in real-world training data and are never explicitly disentangled during training, RealFIT learns to adjust each dimension independently without altering the others.
+          </p>
+        </div>
+
+        <!-- Right Card: Varying Height H -->
+        <div class="showcase-panel">
+          <div>
+            <div class="showcase-header">
+              <div>
+                <h3 class="showcase-title">Varying Subject Height (<span class="math">H</span>)</h3>
+                <p class="showcase-sub">Hold garment dimensions fixed in cm while varying wearer height (±10 cm).</p>
+              </div>
+              <div class="segmented-control">
+                <button class="seg-btn active" data-height-item="pink_dress">Pink Pleated Midi Dress</button>
+                <button class="seg-btn" data-height-item="navy_tee">Navy Crewneck T-Shirt</button>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;background:var(--bg-alt);border:1px solid var(--border-light);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.8rem;font-weight:700;color:var(--text-secondary);">Fixed Garment Dimensions:</span>
+              <span id="height-fixed-spec" style="font-family:var(--font-mono);font-size:0.78rem;font-weight:700;color:var(--accent);">L = 82 cm · B = 84 cm · W = 68 cm</span>
+            </div>
+
+            <div class="trio-showcase-grid" style="margin-top:16px;">
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="mini-input-card">
+                  <img id="height-person-img" src="assets/height/pink_dress_person.jpg" alt="Input Person">
+                  <div class="mini-input-label">Person <span class="math">I<sub>p</sub></span></div>
+                </div>
+                <div class="mini-input-card">
+                  <img id="height-garment-img" src="assets/height/pink_dress_garment.jpg" alt="Input Garment">
+                  <div class="mini-input-label">Garment <span class="math">I<sub>g</sub></span></div>
+                </div>
+              </div>
+
+              <div id="height-trio-grid" class="trio-cards-row"></div>
+            </div>
+          </div>
+
+          <p class="paper-caption" style="margin-top:4px;">
+            <strong>Varying height <span class="math">H</span>.</strong> Holding the physical garment measurements fixed in centimeters while decreasing the subject height <span class="math">H</span> (e.g., from 175 cm to 155 cm, or from 192 cm to 172 cm) causes the exact same garment to cover a progressively larger proportion of the body.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: QUALITATIVE COMPARISON WITH BASELINES -->
+  <section id="comparison" class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Qualitative Comparison with Baselines</h2>
+        <p class="section-desc">
+          Compare Ground Truth (<span class="math">I<sub>gt</sub></span>, Input Size) alongside all six methods across −10%, Input Size, and +10%.
+        </p>
+      </div>
+
+      <div class="arena-card">
+        <div class="arena-controls-row">
+          <div class="segmented-control" id="arena-case-tabs">
+            <button class="seg-btn active" data-arena-case="lace_top">1. Black Lace Top (RealFIT-Web)</button>
+            <button class="seg-btn" data-arena-case="floral_dress">2. Floral Dress (RealFIT-Web)</button>
+            <button class="seg-btn" data-arena-case="red_polo">3. Red Polo Shirt (RealFIT-Bench)</button>
+            <button class="seg-btn" data-arena-case="black_joggers">4. Black Pants (RealFIT-Bench)</button>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:0.8rem;font-weight:700;color:var(--text-secondary);">Active Scale:</span>
+            <div class="segmented-control">
+              <button class="seg-btn" data-arena-scale="0">−10%</button>
+              <button class="seg-btn active" data-arena-scale="1">Input Size</button>
+              <button class="seg-btn" data-arena-scale="2">+10%</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px;font-size:0.8rem;color:var(--text-secondary);">
+          <div id="arena-meta-text" style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary);"></div>
+          <div>
+            <span style="display:inline-block;width:14px;border-top:2px dashed #eab308;vertical-align:middle;margin-right:5px;"></span>
+            <span>Dashed yellow line marks the Ground Truth (<span class="math">I<sub>gt</sub></span>, Input Size) hemline reference across all methods.</span>
+          </div>
+        </div>
+
+        <!-- 7-Column Grid: Col 1 = Ground Truth + Inputs, Cols 2..7 = 6 Methods -->
+        <div id="arena-7col-grid" class="arena-7col-grid"></div>
+
+        <!-- Exact Paper Caption from fig/qualitative.tex -->
+        <p class="paper-caption" style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border-light);">
+          <strong>Qualitative comparison on RealFIT-Web and RealFIT-Bench.</strong> For each example, the left column shows the ground-truth image <span class="math">I<sub>gt</sub></span> corresponding to the <em>Input Size</em> alongside the input person and garment. Each method generates three try-on results with garment dimensions varied by ±10% (−10%, <em>Input Size</em>, and +10%). <strong>RealFIT</strong> (<em>Ours</em>) matches <span class="math">I<sub>gt</sub></span> at the input size and achieves accurate, consistent size changes across scales with high visual quality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: METHOD OVERVIEW (DIAGRAM + EXACT PAPER CAPTION ONLY) -->
+  <section id="method">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Method Overview</h2>
+      </div>
+
+      <div class="paper-figure-card" style="margin-bottom:0;">
+        <img src="assets/figures/method_slide2_cropped.png" alt="RealFIT overview">
+        <p class="paper-caption">
+          <strong>RealFIT overview.</strong> <strong>(a)</strong> The reference <span class="math">I<sub>p</sub></span> and layflat garment <span class="math">I<sub>g</sub></span> are VAE-encoded and sequence-concatenated with the noisy latent <span class="math">x<sub>t</sub></span> in the image stream, while measurements <span class="math"><b class="math-bf">m</b> = [<b class="math-bf">m</b><sub>p</sub>, <b class="math-bf">m</b><sub>g</sub>]</span> are Fourier–MLP embedded and prepended to the text tokens. <strong>(b)</strong> LMC evaluates <span class="math">v<sub>θ</sub></span> twice on a shared <span class="math">x<sub>t</sub></span>, under <span class="math"><b class="math-bf">m</b></span> and stop-gradient <span class="math"><b class="math-bf">m</b>'</span>, and aligns the predicted velocity difference <span class="math">δ<sub>v</sub></span> with the ground truth <span class="math">δ<sub>u</sub> = z' − z</span> inside the top-<span class="math">k</span>% active region <span class="math"><span class="math-cal">R</span></span>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: RELATED WORK & BIBTEX -->
+  <section id="citation" class="section-alt">
+    <div class="container-narrow">
+      <div class="section-head" style="margin-bottom:18px;">
+        <h2 class="section-title">Related Work</h2>
+      </div>
+      <div class="abstract-box" style="margin-bottom:40px;padding:20px 26px;">
+        <p class="abstract-text" style="text-align:left;">
+          For synthetic 3D physics-simulated fit-aware virtual try-on, please also check out our prior work:
+          <a href="https://johannakarras.github.io/FIT/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--accent);">FIT: A Large-Scale Dataset for Fit-Aware Virtual Try-On</a>
+          (Wang, Karras, Li, and Kemelmacher-Shlizerman, SIGGRAPH 2026).
+        </p>
+      </div>
+
+      <div class="section-head" style="margin-bottom:20px;">
+        <h2 class="section-title">BibTeX</h2>
+      </div>
+
+      <div class="bibtex-wrap">
+        <button id="copy-bibtex-btn" class="copy-btn">Copy BibTeX</button>
+        <pre id="bibtex-code">@article{wang2026realfit,
+  title   = {Measurement-Conditioned Virtual Try-On},
+  author  = {Wang, Yuanhao and Ramakrishnan, Varsha and Seitz, Steve and Kemelmacher-Shlizerman, Ira},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      Measurement-Conditioned Virtual Try-On · University of Washington &amp; Google Research
+    </div>
+  </footer>
+
+  <script src="static/js/app.js?v=12"></script>
+</body>
+</html>
